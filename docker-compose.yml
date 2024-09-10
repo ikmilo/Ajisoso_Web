@@ -1,0 +1,25 @@
+services:
+  apache:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ajisoso_web_app
+    ports:
+      - "8080:80"
+    networks:
+      - webnet
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - apache
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
