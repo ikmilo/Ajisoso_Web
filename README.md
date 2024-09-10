@@ -15,6 +15,23 @@ B((Nginx Server)) --> C[Apache WEB Server]
 ```
 #
 
+## Buildeo
+
+Se debe ejecutar en el siguiente comando
+
+```sh
+docker compose up -d
+```
+
+Deberá generar 2 contenedores:
+
+```sh
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                                   NAMES
+620b85c5e648   nginx:latest   "/docker-entrypoint.…"   4 seconds ago   Up 3 seconds   0.0.0.0:80->80/tcp, :::80->80/tcp       nginx_proxy
+bd2d4bdd4420   temp-apache    "httpd-foreground"       4 seconds ago   Up 3 seconds   0.0.0.0:8080->80/tcp, :::8080->80/tcp   ajisoso_web_app
+```
+#
+
 ## Imput 
 
 una vez levantado el docker compose, se puede hacer un **`CURL localhost/healthCheck`**. esto debe devolver un json con el estado de la aplicación, deberá verse de la siguiente forma
